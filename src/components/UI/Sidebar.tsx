@@ -25,16 +25,16 @@ export const Sidebar: React.FC = () => {
   ];
   
   return (
-    <aside className="w-64 bg-egypt-slate text-white shadow-lg flex flex-col">
-      <div className="p-6 border-b border-slate-600">
-        <div className="flex items-center gap-2 text-egypt-gold">
-          <Home size={24} />
-          <span className="font-bold text-lg">Game Menu</span>
+    <aside className="w-72 bg-gradient-to-b from-egypt-slate-dark to-egypt-navy-dark text-white shadow-2xl flex flex-col border-r-2 border-egypt-gold/20 egyptian-pattern">
+      <div className="p-6 border-b-2 border-egypt-gold/30 glass-card">
+        <div className="flex items-center gap-3 text-egypt-gold animate-fade-in">
+          <Home size={28} className="animate-pulse-slow" />
+          <span className="font-bold text-xl gold-gradient">Game Menu</span>
         </div>
       </div>
       
-      <nav className="flex-1 py-4">
-        {menuItems.map(item => {
+      <nav className="flex-1 py-6 px-3">
+        {menuItems.map((item, index) => {
           const Icon = item.icon;
           const isActive = activePanel === item.id;
           
@@ -43,24 +43,33 @@ export const Sidebar: React.FC = () => {
               key={item.id}
               onClick={() => setActivePanel(item.id)}
               className={`
-                w-full flex items-center gap-3 px-6 py-3 text-left transition-colors
+                w-full flex items-center gap-4 px-6 py-4 mb-2 text-left transition-all duration-300 rounded-lg btn-egypt
                 ${isActive 
-                  ? 'bg-egypt-navy text-egypt-gold border-r-4 border-egypt-gold' 
-                  : 'hover:bg-slate-600 text-gray-200'
+                  ? 'bg-gradient-to-r from-egypt-navy to-egypt-navy-light text-egypt-gold border-l-4 border-egypt-gold shadow-gold transform scale-105' 
+                  : 'hover:bg-egypt-slate/30 text-gray-200 hover:text-egypt-gold-light hover:translate-x-2'
                 }
               `}
+              style={{ animationDelay: `${index * 0.1}s` }}
             >
-              <Icon size={20} />
-              <span className="font-medium">{item.label}</span>
+              <Icon size={22} className={isActive ? 'animate-pulse-slow' : ''} />
+              <span className="font-semibold text-base">{item.label}</span>
+              {isActive && (
+                <span className="ml-auto">
+                  <span className="inline-block w-2 h-2 bg-egypt-gold rounded-full animate-pulse"></span>
+                </span>
+              )}
             </button>
           );
         })}
       </nav>
       
-      <div className="p-6 border-t border-slate-600">
-        <div className="text-xs text-gray-400">
-          <p>Egypt Empire 2025</p>
-          <p>Version 1.0</p>
+      <div className="p-6 border-t-2 border-egypt-gold/30 glass-card">
+        <div className="text-xs text-egypt-gold-light space-y-1">
+          <p className="font-bold text-sm">Egypt Empire 2025</p>
+          <p className="text-egypt-slate-light">Version 1.0</p>
+          <div className="mt-3 pt-3 border-t border-egypt-gold/20">
+            <p className="text-egypt-gold font-semibold">🏛️ Rule with wisdom</p>
+          </div>
         </div>
       </div>
     </aside>

@@ -42,14 +42,16 @@ function App() {
   };
   
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="min-h-screen bg-egyptian-gradient">
       <Header />
       
       <div className="flex">
         <Sidebar />
         
-        <main className="flex-1 p-6 overflow-auto" style={{ height: 'calc(100vh - 80px)' }}>
-          {renderMainContent()}
+        <main className="flex-1 p-6 overflow-auto papyrus-texture animate-fade-in" style={{ height: 'calc(100vh - 80px)' }}>
+          <div className="max-w-full">
+            {renderMainContent()}
+          </div>
         </main>
       </div>
       
